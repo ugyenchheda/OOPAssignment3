@@ -1,16 +1,17 @@
-﻿using OOPAssignment3;
+﻿using System.Text.RegularExpressions;
+using OOPAssignment3;
 
 bool more = false;
 int choice;
 string path;
 string playerName;
 DateTime birthDate;
-
+string emailId;
 Player player;
 
 List<Player> allPlayers = new List<Player>()
 {
-    new Player(null, null)
+    new Player(null, null, null)
 };
 
 do
@@ -73,7 +74,17 @@ do
                 Console.Write("Not valid, try again: ");
                 received = Console.ReadLine();
             }
-            player = new Player(playerName, birthDate);
+            Console.Write("Enter the Email: ");
+            received = Console.ReadLine();
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            while (!Regex.IsMatch(received, pattern))
+            {
+                Console.Write("Not valid, try again: ");
+                received = Console.ReadLine();
+            }
+            emailId = received;
+            player = new Player(playerName, birthDate, emailId);
+            player.ContactInformation.Add(new Player.ContactInfo() { Email = emailId });
             allPlayers[0].AddPlayer(path, player);
             break;
         case 3:

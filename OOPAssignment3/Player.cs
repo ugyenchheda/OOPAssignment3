@@ -4,7 +4,7 @@ namespace OOPAssignment3
 {
     internal class Player
     {
-        public Player(string? name, DateTime? dateOfBirth)
+        public Player(string? name, DateTime? dateOfBirth, string? contactinfos)
         {
             Name = name;
             DateOfBirth = dateOfBirth;
@@ -34,9 +34,12 @@ namespace OOPAssignment3
             }
             foreach (var item in players)
             {
-                Console.WriteLine("Name: {0}, date of Birth: {1}, Email: {2} and Mobile: {3}",
-                    item.Name, item.DateOfBirth.Value.ToString("d"), 
-                    item.ContactInformation[0].Email, item.ContactInformation[0].Mobile);
+                Console.Write("Name: {0}, Date of Birth: {1}", item.Name, item.DateOfBirth.Value.ToString("d"));
+                if (item.ContactInformation.Any())
+                {
+                    Console.Write(", Email: {0}, Mobile: {1}", item.ContactInformation[0].Email, item.ContactInformation[0].Mobile);
+                }
+                Console.WriteLine();
             }
         }
 
@@ -49,23 +52,15 @@ namespace OOPAssignment3
             using (StreamReader streamReader = new StreamReader(path))
             {
                 var jsonString = streamReader.ReadToEnd();
-                //Deserialize the JSON data into generic list type Client objects:
                 players = JsonConvert.DeserializeObject<List<Player>>(jsonString);
             }
-
-            //Add newClient to the end of the list:
             players.Add(newPlayer);
-
-            //true: append data to the file, false: overwrite the file
-            //If the specified file does not exist, this parameter has no effect. The
-            //constructor creates a new file.
             using (StreamWriter streamWriter = new StreamWriter(path, false))
             {
                 string jsonString = JsonConvert.SerializeObject(players);
                 streamWriter.Write(jsonString);
             }
         }
-
 
 
 
