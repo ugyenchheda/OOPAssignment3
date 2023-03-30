@@ -4,7 +4,7 @@ bool more = false;
 int choice;
 string path;
 string playerName;
-DateTime registrationDate;
+DateTime birthDate;
 
 Player player;
 
@@ -66,14 +66,14 @@ do
 
             } while (String.IsNullOrEmpty(playerName));
 
-            Console.Write("Enter the date of registration: ");
+            Console.Write("Enter the date of birth: ");
             received = Console.ReadLine();
-            while (!DateTime.TryParse(received, out registrationDate))
+            while (!DateTime.TryParse(received, out birthDate))
             {
                 Console.Write("Not valid, try again: ");
                 received = Console.ReadLine();
             }
-            player = new Player(playerName, registrationDate);
+            player = new Player(playerName, birthDate);
             allPlayers[0].AddPlayer(path, player);
             break;
         case 3:
@@ -86,8 +86,6 @@ do
                     Console.WriteLine("The field was left empty, try again!");
 
             } while (String.IsNullOrEmpty(path));
-
-
 
             do
             {

@@ -13,14 +13,14 @@ namespace OOPAssignment3
 {
     internal class Player
     {
-        public Player(string? name, DateTime? dateOfRegistration)
+        public Player(string? name, DateTime? dateOfBirth)
         {
             Name = name;
-            DateOfRegistration = dateOfRegistration;
+            DateOfBirth = dateOfBirth;
         }
 
         public string? Name { get; set; }
-        public DateTime? DateOfRegistration { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public void PrintTheContents(string path)
         {
@@ -35,8 +35,8 @@ namespace OOPAssignment3
             }
             foreach (var item in players)
             {
-                Console.WriteLine("Name: {0}, date of registration: {1}.",
-                    item.Name, item.DateOfRegistration.Value.ToString("d"));
+                Console.WriteLine("Name: {0}, date of Birth: {1}.",
+                    item.Name, item.DateOfBirth.Value.ToString("d"));
             }
         }
 
@@ -113,19 +113,19 @@ namespace OOPAssignment3
 
 
 
-                                DateTime newRegistrationDate;
-                                Console.WriteLine("Current registration date is {0}.",
-                                    players[i].DateOfRegistration);
-                                Console.Write("Enter new date of registration: ");
+                                DateTime newBirthDate;
+                                Console.WriteLine("Current Birth date is {0}.",
+                                    players[i].DateOfBirth);
+                                Console.Write("Enter new date of Birth: ");
                                 string received = Console.ReadLine();
                                 if (!String.IsNullOrEmpty(received))
                                 {
-                                    while (!DateTime.TryParse(received, out newRegistrationDate))
+                                    while (!DateTime.TryParse(received, out newBirthDate))
                                     {
                                         Console.Write("Not valid, try again: ");
                                         received = Console.ReadLine();
                                     }
-                                    players[i].DateOfRegistration = newRegistrationDate;
+                                    players[i].DateOfBirth = newBirthDate;
                                     ifChanged = true;
                                 }
                             }
