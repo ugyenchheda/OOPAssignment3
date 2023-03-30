@@ -17,10 +17,18 @@ namespace OOPAssignment3
         {
             Name = name;
             DateOfBirth = dateOfBirth;
+            ContactInformation = new List<ContactInfo>();
         }
 
         public string? Name { get; set; }
         public DateTime? DateOfBirth { get; set; }
+
+        public List<ContactInfo> ContactInformation { get; set; }
+        public class ContactInfo
+        {
+            public string Email { get; set; }
+            public string Mobile { get; set; }
+        }
 
         public void PrintTheContents(string path)
         {
@@ -35,8 +43,9 @@ namespace OOPAssignment3
             }
             foreach (var item in players)
             {
-                Console.WriteLine("Name: {0}, date of Birth: {1}.",
-                    item.Name, item.DateOfBirth.Value.ToString("d"));
+                Console.WriteLine("Name: {0}, date of Birth: {1}, Email: {2} and Mobile: {3}",
+                    item.Name, item.DateOfBirth.Value.ToString("d"), 
+                    item.ContactInformation[0].Email, item.ContactInformation[0].Mobile);
             }
         }
 
@@ -111,8 +120,6 @@ namespace OOPAssignment3
                                     ifChanged = true;
                                 }
 
-
-
                                 DateTime newBirthDate;
                                 Console.WriteLine("Current Birth date is {0}.",
                                     players[i].DateOfBirth);
@@ -142,9 +149,7 @@ namespace OOPAssignment3
             }
             if (ifChanged)
             {
-                //true: append data to the file, false: overwrite the file
-                //If the specified file does not exist, this parameter has no effect. The
-                //constructor creates a new file.
+
                 using (StreamWriter streamWriter = new StreamWriter(path, false))
                 {
                     string jsonString = JsonConvert.SerializeObject(players);
@@ -154,8 +159,6 @@ namespace OOPAssignment3
                 Console.WriteLine();
             }
         }
-
-
 
         public void RemovePlayer(string path, string name)
         {
@@ -198,8 +201,6 @@ namespace OOPAssignment3
                                     ifChanged = true;
                                 }
 
-
-
                                 else
                                     Console.WriteLine("The customer's {0} information could not be deleted from the file.",
                                     toBeRemoved);
@@ -217,9 +218,6 @@ namespace OOPAssignment3
             }
             if (ifChanged)
             {
-                //true: append data to the file, false: overwrite the file
-                //If the specified file does not exist, this parameter has no effect. The
-                //constructor creates a new file.
                 using (StreamWriter streamWriter = new StreamWriter(path, false))
                 {
                     string jsonString = JsonConvert.SerializeObject(players);
