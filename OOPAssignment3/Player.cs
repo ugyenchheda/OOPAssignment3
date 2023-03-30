@@ -1,13 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
 
 namespace OOPAssignment3
 {
@@ -48,8 +39,6 @@ namespace OOPAssignment3
                     item.ContactInformation[0].Email, item.ContactInformation[0].Mobile);
             }
         }
-
-
 
 
         public void AddPlayer(string path, Player newPlayer)
