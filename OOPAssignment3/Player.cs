@@ -33,7 +33,7 @@ namespace OOPAssignment3
             using (StreamReader streamReader = new StreamReader(path))
             {
                 var jsonString = streamReader.ReadToEnd();
-                //Deserialize the JSON data into generic list type Client objects:
+                //Deserialize the JSON data into generic list type player objects:
                 players = JsonConvert.DeserializeObject<List<Player>>(jsonString);
             }
             foreach (var item in players)
@@ -67,7 +67,7 @@ namespace OOPAssignment3
         }
 
 
-
+        // for modifying information of palyer
         public void ModifyInformation(string path, string name)
         {
             bool ifChanged = false;
@@ -77,7 +77,7 @@ namespace OOPAssignment3
             using (StreamReader streamReader = new StreamReader(path))
             {
                 var jsonString = streamReader.ReadToEnd();
-                //Deserialize the JSON data into generic list type Client objects:
+                //Deserialize the JSON data into generic list type Player objects:
                 players = JsonConvert.DeserializeObject<List<Player>>(jsonString);
 
                 var chosen = players.Where(cli => cli.Name.Contains(name));
@@ -90,13 +90,12 @@ namespace OOPAssignment3
                     {
                         if (players[i].Name.Contains(name))
                         {
-                            Console.WriteLine("There is a customer {0} in the file.",
+                            Console.WriteLine("There is a player {0} in the file.",
                                 players[i].Name);
                             Console.Write("Do you want to change the information? (Y/N): ");
                             string choice = Console.ReadLine().ToUpper();
                             if (choice.StartsWith("Y"))
                             {
-                                //You are only here if changing data is selected
                                 Console.WriteLine("Next, we go through all the information.");
                                 Console.WriteLine("If you do not change any information,press ENTER at that point.");
                                 Console.WriteLine("Current name is {0}.", players[i].Name);
@@ -157,10 +156,10 @@ namespace OOPAssignment3
             using (StreamReader streamReader = new StreamReader(path))
             {
                 var jsonString = streamReader.ReadToEnd();
-                //Deserialize the JSON data into generic list type Client objects:
+                //Deserialize the JSON data into generic list type Player objects:
                 players = JsonConvert.DeserializeObject<List<Player>>(jsonString);
 
-                //Are there any clients with that name?
+                //Are there any players with that name?
                 var chosen = players.Where(cli => cli.Name.Contains(name));
                 int numberOfPlayers = players.Count;
 
@@ -182,7 +181,7 @@ namespace OOPAssignment3
                                 bool succeeded = players.Remove(players[i]);
                                 if (succeeded)
                                 {
-                                    Console.WriteLine("The information of client {0} was removed from the generic collection.",
+                                    Console.WriteLine("The information of player {0} was removed from the generic collection.",
                                         toBeRemoved);
                                     numberOfPlayers = numberOfPlayers - 1;
                                     i = i - 1;

@@ -39,12 +39,15 @@ do
             Console.WriteLine("Your choice: Print the contents of the file to the screen.");
             do
             {
+
                 Console.Write("Enter the file path: ");
                 path = Console.ReadLine();
-                if (String.IsNullOrEmpty(path))
-                    Console.WriteLine("The field was left empty, try again!");
+                if (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("The field was either left empty or not correct, try again!");
+                }
 
-            } while (String.IsNullOrEmpty(path));
+            } while (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase));
 
 
             allPlayers[0].PrintTheContents(path);
@@ -53,12 +56,17 @@ do
             Console.WriteLine("Your choice: Add a new Player.");
             do
             {
+
                 Console.Write("Enter the file path: ");
                 path = Console.ReadLine();
-                if (String.IsNullOrEmpty(path))
-                    Console.WriteLine("The field was left empty, try again!");
+                if (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("The field was either left empty or not correct, try again!");
+                }
 
-            } while (String.IsNullOrEmpty(path));
+            } while (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase));
+
+
             do
             {
                 Console.Write("Enter the Player's name: ");
@@ -101,12 +109,15 @@ do
             Console.WriteLine("Your choice: Modify Player information.");
             do
             {
+
                 Console.Write("Enter the file path: ");
                 path = Console.ReadLine();
-                if (String.IsNullOrEmpty(path))
-                    Console.WriteLine("The field was left empty, try again!");
+                if (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("The field was either left empty or not correct, try again!");
+                }
 
-            } while (String.IsNullOrEmpty(path));
+            } while (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase));
 
             do
             {
@@ -124,9 +135,14 @@ do
             {
                 Console.Write("Enter the file path: ");
                 path = Console.ReadLine();
-                if (String.IsNullOrEmpty(path))
-                    Console.WriteLine("The field was left empty, try again!");
-            } while (String.IsNullOrEmpty(path));
+                if (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("The field was either left empty or not correct, try again!");
+                }
+
+            } while (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase));
+
+
             do
             {
                 Console.Write("Enter the Player's name: ");
