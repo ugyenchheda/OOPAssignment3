@@ -13,7 +13,16 @@ namespace OOPAssignment3
             ContactInformation = new List<ContactInfo>();
             if (!String.IsNullOrEmpty(email) || !String.IsNullOrEmpty(mobile))
             {
-                ContactInformation.Add(new ContactInfo { Email = email, Mobile = mobile });
+                var existingContactInfo = ContactInformation.FirstOrDefault(ci => ci.Email != null || ci.Mobile != null);
+                if (existingContactInfo != null)
+                {
+                    existingContactInfo.Email = email;
+                    existingContactInfo.Mobile = mobile;
+                }
+                else
+                {
+                    ContactInformation.Add(new ContactInfo { Email = email, Mobile = mobile });
+                }
             }
         }
 
@@ -135,7 +144,8 @@ namespace OOPAssignment3
                                         Console.Write("Not  a valid Email Address, try again: ");
                                         newEmail = Console.ReadLine();
                                     }
-                                    players[i].ContactInformation[0].Email = newEmail;
+                                    ContactInfo contactInfo = players[i].ContactInformation[0];
+                                    contactInfo.Email = newEmail;
                                     ifChanged = true;
                                 }
 
@@ -150,7 +160,8 @@ namespace OOPAssignment3
                                         Console.Write("Not  a valid Mobile Number, try again: ");
                                         newMobile = Console.ReadLine();
                                     }
-                                    players[i].ContactInformation[0].Mobile = newMobile;
+                                    ContactInfo contactInfo = players[i].ContactInformation[0];
+                                    contactInfo.Mobile = newMobile;
                                     ifChanged = true;
                                 }
                             }
