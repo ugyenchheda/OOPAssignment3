@@ -4,11 +4,15 @@ namespace OOPAssignment3
 {
     internal class Player
     {
-        public Player(string? name, DateTime? dateOfBirth, string? contactinfos)
+        public Player(string? name, DateTime? dateOfBirth, string? email, string? mobile)
         {
             Name = name;
             DateOfBirth = dateOfBirth;
             ContactInformation = new List<ContactInfo>();
+            if (!String.IsNullOrEmpty(email) || !String.IsNullOrEmpty(mobile))
+            {
+                ContactInformation.Add(new ContactInfo { Email = email, Mobile = mobile });
+            }
         }
 
         public string? Name { get; set; }

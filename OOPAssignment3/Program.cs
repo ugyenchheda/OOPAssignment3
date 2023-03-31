@@ -7,11 +7,12 @@ string path;
 string playerName;
 DateTime birthDate;
 string emailId;
+string mobileNo;
 Player player;
 
 List<Player> allPlayers = new List<Player>()
 {
-    new Player(null, null, null)
+    new Player(null, null, null, null)
 };
 
 do
@@ -82,9 +83,18 @@ do
                 Console.Write("Not valid, try again: ");
                 received = Console.ReadLine();
             }
-            emailId = received;
-            player = new Player(playerName, birthDate, emailId);
-            player.ContactInformation.Add(new Player.ContactInfo() { Email = emailId });
+            emailId = received; 
+            Console.Write("Enter the Mobile: ");
+            string phone = Console.ReadLine();
+            string phonePattern = @"^[0-9]+$";
+            while (!Regex.IsMatch(phone, phonePattern))
+            {
+                Console.Write("Not valid, try again: ");
+                phone = Console.ReadLine();
+            }
+            mobileNo = phone;
+            player = new Player(playerName, birthDate, emailId, mobileNo);
+            player.ContactInformation.Add(new Player.ContactInfo() { Email = emailId, Mobile = mobileNo });
             allPlayers[0].AddPlayer(path, player);
             break;
         case 3:
