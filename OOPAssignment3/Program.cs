@@ -92,9 +92,9 @@ do
                 received = Console.ReadLine();
             }
             emailId = received; 
-            Console.Write("Enter the Mobile: ");
+            Console.WriteLine("Enter Mobile Number in +358XXXXXXXXXX format");
             string phone = Console.ReadLine();
-            string phonePattern = @"^[0-9]+$";
+            string phonePattern = @"^(\+|00)358\d{9}$";
             while (!Regex.IsMatch(phone, phonePattern))
             {
                 Console.Write("Not valid, try again: ");

@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Numerics;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace OOPAssignment3
 {
@@ -108,8 +110,7 @@ namespace OOPAssignment3
                                 }
 
                                 DateTime newBirthDate;
-                                Console.WriteLine("Current Birth date is {0}.",
-                                    players[i].DateOfBirth);
+                                Console.WriteLine("Current Birth date is {0}.", players[i].DateOfBirth);
                                 Console.Write("Enter new date of Birth: ");
                                 string received = Console.ReadLine();
                                 if (!String.IsNullOrEmpty(received))
@@ -120,6 +121,36 @@ namespace OOPAssignment3
                                         received = Console.ReadLine();
                                     }
                                     players[i].DateOfBirth = newBirthDate;
+                                    ifChanged = true;
+                                }
+                                Console.WriteLine("Current Email Address is {0}.", players[i].ContactInformation[0].Email);
+                                Console.WriteLine("Enter new Email Address: ");
+                                string newEmail = Console.ReadLine();
+
+                                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                                if (!String.IsNullOrEmpty(newEmail) )
+                                {
+                                    while (!Regex.IsMatch(newEmail, emailPattern))
+                                    {
+                                        Console.Write("Not  a valid Email Address, try again: ");
+                                        newEmail = Console.ReadLine();
+                                    }
+                                    players[i].ContactInformation[0].Email = newEmail;
+                                    ifChanged = true;
+                                }
+
+                                Console.WriteLine("Current Mobile Number is {0}.", players[i].ContactInformation[0].Mobile);
+                                Console.WriteLine("Enter Mobile Number +358XXXXXXXXXX format");
+                                string newMobile = Console.ReadLine();
+                                string phonePattern = @"^(\+|00)358\d{9}$";
+                                if (!String.IsNullOrEmpty(newMobile))
+                                {
+                                    while (!Regex.IsMatch(newMobile, phonePattern))
+                                    {
+                                        Console.Write("Not  a valid Mobile Number, try again: ");
+                                        newMobile = Console.ReadLine();
+                                    }
+                                    players[i].ContactInformation[0].Mobile = newMobile;
                                     ifChanged = true;
                                 }
                             }
