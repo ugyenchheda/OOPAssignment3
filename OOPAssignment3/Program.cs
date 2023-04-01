@@ -19,11 +19,11 @@ do
 {
     Console.WriteLine();
     Console.WriteLine("Welcome to JSON file processing: Select an action(1 - 5)");
-    Console.WriteLine("1. Print the contents of the file to the screen.");
-    Console.WriteLine("2. Add a new Player.");
-    Console.WriteLine("3. Modify Player information.");
-    Console.WriteLine("4. Remove Player.");
-    Console.WriteLine("5. Do Nothing.");
+    Console.WriteLine("Enter 1 if you want to show all.");
+    Console.WriteLine("Enter 2 if you want to add a new team member.");
+    Console.WriteLine("Enter 3 if you want to modify information.");
+    Console.WriteLine("Enter 4 if you want to remove information.");
+    Console.WriteLine("Enter 5 if you want to do nothing.");
     Console.WriteLine();
     Console.Write("Select an action: ");
 
@@ -37,7 +37,7 @@ do
     switch (choice)
     {
         case 1:
-            Console.WriteLine("Your choice: Print the contents of the file to the screen.");
+            Console.WriteLine("Your choice: Show All");
             do
             {
                 Console.Write("Enter the file path: ");
@@ -54,7 +54,7 @@ do
             break;
 
         case 2:
-            Console.WriteLine("Your choice: Add a new Player.");
+            Console.WriteLine("Your choice: Add a new team member.");
             do
             {
 
@@ -143,7 +143,7 @@ do
 
         case 4:
 
-            Console.WriteLine("Your choice: Remove Player.");
+            Console.WriteLine("Your choice: Remove Player Information.");
             do
             {
                 Console.Write("Enter the file path: ");
@@ -170,24 +170,19 @@ do
         case 5:
 
             Console.WriteLine("Your choice: Do Nothing...");
-
-            var keyInfo = Console.ReadKey();
-
-            if (keyInfo.Key == ConsoleKey.Escape)
-            {
-                break;
-            }
-            Console.WriteLine("You didn't press the Esc key.");
             break;
         default:
-            Console.WriteLine("Your choice: You'll never get there.");
+            Console.WriteLine("Your choice: Let it rest...");
             break;
     }
+
     Console.WriteLine();
     Console.Write("Do you continue with the new operation? (Y/N): ");
     received = Console.ReadLine().ToUpper();
+
     if (received.StartsWith("Y"))
         more = true;
     else
         more = false;
+
 } while (more);
