@@ -240,7 +240,7 @@ namespace OOPAssignment3
                 }
                 else
                 {
-                    Console.WriteLine("No customer with that name was found.");
+                    Console.WriteLine("No player with that name was found.");
                     Console.WriteLine();
                 }
             }
