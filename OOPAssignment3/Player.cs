@@ -91,7 +91,7 @@ namespace OOPAssignment3
                 //Deserialize the JSON data into generic list type Player objects:
                 players = JsonConvert.DeserializeObject<List<Player>>(jsonString);
 
-                var chosen = players.Where(cli => cli.Name.Contains(name));
+                var chosen = players.Where(cli => cli.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
                 int numberOfPlayers = players.Count;
 
                 if (chosen.Any())
@@ -99,10 +99,9 @@ namespace OOPAssignment3
                     //You enter here if there were wanted names...
                     for (int i = 0; i < numberOfPlayers; i++)
                     {
-                        if (players[i].Name.Contains(name))
+                        if (players[i].Name.Contains(name, StringComparison.OrdinalIgnoreCase))
                         {
-                            Console.WriteLine("There is a player {0} in the file.",
-                                players[i].Name);
+                            Console.WriteLine("There is a player {0} in the file.", players[i].Name);
                             Console.Write("Do you want to change the information? (Y/N): ");
                             string choice = Console.ReadLine().ToUpper();
                             if (choice.StartsWith("Y"))
@@ -202,7 +201,7 @@ namespace OOPAssignment3
                 players = JsonConvert.DeserializeObject<List<Player>>(jsonString);
 
                 //Are there any players with that name?
-                var chosen = players.Where(cli => cli.Name.Contains(name));
+                var chosen = players.Where(cli => cli.Name.Contains(name,StringComparison.OrdinalIgnoreCase));
                 int numberOfPlayers = players.Count;
 
                 if (chosen.Any())
@@ -210,9 +209,9 @@ namespace OOPAssignment3
                     //You enter here if there were wanted names:
                     for (int i = 0; i < numberOfPlayers; i++)
                     {
-                        if (players[i].Name.Contains(name))
+                        if (players[i].Name.Contains(name, StringComparison.OrdinalIgnoreCase))
                         {
-                            Console.WriteLine("There is a customer {0} in the file.",
+                            Console.WriteLine("There is a player {0} in the file.",
                                 players[i].Name);
                             Console.Write("Do you want to delete the customer's data? (Y/N): ");
                             string choice = Console.ReadLine().ToUpper();
