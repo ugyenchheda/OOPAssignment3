@@ -18,11 +18,12 @@ List<Player> allPlayers = new List<Player>()
 do
 {
     Console.WriteLine();
-    Console.WriteLine("Welcome to JSON file processing: Select an action(1 - 4)");
+    Console.WriteLine("Welcome to JSON file processing: Select an action(1 - 5)");
     Console.WriteLine("1. Print the contents of the file to the screen.");
     Console.WriteLine("2. Add a new Player.");
     Console.WriteLine("3. Modify Player information.");
     Console.WriteLine("4. Remove Player.");
+    Console.WriteLine("5. Do Nothing.");
     Console.WriteLine();
     Console.Write("Select an action: ");
 
@@ -151,6 +152,19 @@ do
                     Console.WriteLine("The field was left empty, try again!");
             } while (String.IsNullOrEmpty(playerName));
             allPlayers[0].RemovePlayer(path, playerName);
+            break;
+
+        case 5:
+
+            Console.WriteLine("Press Esc key to exit...");
+
+            var keyInfo = Console.ReadKey();
+
+            if (keyInfo.Key == ConsoleKey.Escape)
+            {
+                break;
+            }
+            Console.WriteLine("You didn't press the Esc key.");
             break;
         default:
             Console.WriteLine("Your choice: You'll never get there.");
