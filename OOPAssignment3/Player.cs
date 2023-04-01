@@ -171,7 +171,7 @@ namespace OOPAssignment3
                 }
                 else
                 {
-                    Console.WriteLine("No customer with that name was found.");
+                    Console.WriteLine("No player with that name was found.");
                     Console.WriteLine();
                 }
             }
@@ -213,7 +213,7 @@ namespace OOPAssignment3
                         {
                             Console.WriteLine("There is a player {0} in the file.",
                                 players[i].Name);
-                            Console.Write("Do you want to delete the customer's data? (Y/N): ");
+                            Console.Write("Do you want to delete the player's data? (Y/N): ");
                             string choice = Console.ReadLine().ToUpper();
                             if (choice.StartsWith("Y"))
                             {
@@ -230,7 +230,7 @@ namespace OOPAssignment3
                                 }
 
                                 else
-                                    Console.WriteLine("The customer's {0} information could not be deleted from the file.",
+                                    Console.WriteLine("The player's {0} information could not be deleted from the file.",
                                     toBeRemoved);
                             }
                         }
