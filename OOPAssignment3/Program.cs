@@ -28,7 +28,7 @@ do
     Console.Write("Select an action: ");
 
     string received = Console.ReadLine();
-    while (!Int32.TryParse(received, out choice) || choice < 1 || choice > 4)
+    while (!Int32.TryParse(received, out choice) || choice < 1 || choice > 5)
     {
         Console.Write("Not valid, try again: ");
         received = Console.ReadLine();
@@ -40,7 +40,6 @@ do
             Console.WriteLine("Your choice: Print the contents of the file to the screen.");
             do
             {
-
                 Console.Write("Enter the file path: ");
                 path = Console.ReadLine();
                 if (String.IsNullOrEmpty(path) || !Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase))
@@ -53,6 +52,7 @@ do
 
             allPlayers[0].PrintTheContents(path);
             break;
+
         case 2:
             Console.WriteLine("Your choice: Add a new Player.");
             do
@@ -79,34 +79,43 @@ do
 
             Console.Write("Enter the date of birth: ");
             received = Console.ReadLine();
+
             while (!DateTime.TryParse(received, out birthDate))
             {
                 Console.Write("Not valid, try again: ");
                 received = Console.ReadLine();
             }
+
             Console.Write("Enter the Email: ");
             received = Console.ReadLine();
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+
             while (!Regex.IsMatch(received, pattern))
             {
                 Console.Write("Not valid, try again: ");
                 received = Console.ReadLine();
             }
+
             emailId = received; 
             Console.WriteLine("Enter Mobile Number in +358XXXXXXXXXX format");
             string phone = Console.ReadLine();
             string phonePattern = @"^(\+|00)358\d{9}$";
+
             while (!Regex.IsMatch(phone, phonePattern))
             {
                 Console.Write("Not valid, try again: ");
                 phone = Console.ReadLine();
             }
+
             mobileNo = phone;
             player = new Player(playerName, birthDate, emailId, mobileNo);
             player.ContactInformation.Add(new Player.ContactInfo() { Email = emailId, Mobile = mobileNo });
             allPlayers[0].AddPlayer(path, player);
+
             break;
+
         case 3:
+
             Console.WriteLine("Your choice: Modify Player information.");
             do
             {
@@ -129,8 +138,11 @@ do
 
             } while (String.IsNullOrEmpty(playerName));
             allPlayers[0].ModifyInformation(path, playerName);
+
             break;
+
         case 4:
+
             Console.WriteLine("Your choice: Remove Player.");
             do
             {
@@ -152,11 +164,12 @@ do
                     Console.WriteLine("The field was left empty, try again!");
             } while (String.IsNullOrEmpty(playerName));
             allPlayers[0].RemovePlayer(path, playerName);
+
             break;
 
         case 5:
 
-            Console.WriteLine("Press Esc key to exit...");
+            Console.WriteLine("Your choice: Do Nothing...");
 
             var keyInfo = Console.ReadKey();
 
