@@ -22,7 +22,7 @@ do
     Console.WriteLine("Enter 1 if you want to show all:");
     Console.WriteLine("Enter 2 if you want to add a new team member:");
     Console.WriteLine("Enter 3 if you want to modify information:");
-    Console.WriteLine("Enter 4 if you want to remove information.");
+    Console.WriteLine("Enter 4 if you want to remove information:");
     Console.WriteLine("Enter 5 if you want to do nothing.");
     Console.WriteLine();
     Console.Write("Select an action: ");
