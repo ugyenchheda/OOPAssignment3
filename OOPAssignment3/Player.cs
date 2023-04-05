@@ -28,7 +28,6 @@ namespace OOPAssignment3
 
         public string? Name { get; set; }
         public DateTime? DateOfBirth { get; set; }
-
         public List<ContactInfo> ContactInformation { get; set; }
         public class ContactInfo
         {
@@ -57,8 +56,6 @@ namespace OOPAssignment3
                 Console.WriteLine();
             }
         }
-
-
         public void AddPlayer(string path, Player newPlayer)
         {
             Console.WriteLine();
